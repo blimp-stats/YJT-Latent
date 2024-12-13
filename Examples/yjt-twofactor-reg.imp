@@ -1,0 +1,45 @@
+SIMULATE: 
+	# Sample Size
+	n = 1000;
+	
+	define:	
+		# Factor correlation
+		cor = 0.3;
+		# reliability for items loading on factor 1
+		rel_1 = 0.7;
+		# reliability for items loading on factor 2
+		rel_2 = 0.8;
+		
+		# Compute residual variances for given reliability.
+		# (v_explained / (v_resid + v_explained) = rel;
+		# Solve for v_resid;
+		v_1 = (1 / rel_1) - 1; 
+		v_2 = (1 / rel_2) - 1;
+
+	n: 
+		# Create phantom variable
+		u = normal(0, cor);
+
+		# Generate factor scores f1 and f2 ~ normal(0, 1)
+		f1s:f2s = normal(u, 1 - cor);
+		
+		# Generate transform
+		f1 = iyjt(f1s, 1.5);
+		f2 = iyjt(f2s, 1.5);
+		
+		# Generate items with equal loadings
+		y1:y3 = normal(f1, v_1);
+		x1:x3 = normal(f2, v_2);
+
+VARIABLES: x1:x3 y1:y3;
+LATENT: ability_x ability_y;
+MODEL: 
+    factor_model:
+        yjt(ability_x) ~ 0;
+        yjt(ability_y) ~ ability_x;
+    items_model:
+        ability_x -> x1:x3;
+        ability_y -> y1:y3;
+BURN: 10000;
+ITER: 10000;
+SEED: 10972;

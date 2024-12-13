@@ -1,0 +1,378 @@
+
+---------------------------------------------------------------------------
+
+                                   Blimp
+                                  3.2.14
+
+             Blimp was developed with funding from Institute of
+           Education Sciences awards R305D150056 and R305D190002.
+
+            Craig K. Enders, P.I. Email: cenders@psych.ucla.edu
+           Brian T. Keller, Co-P.I. Email: btkeller@missouri.edu
+                 Han Du, Co-P.I. Email: hdu@psych.ucla.edu
+                 Roy Levy, Co-P.I. Email: roy.levy@asu.edu
+
+              Programming and Blimp Studio by Brian T. Keller
+
+                   There is no expressed license given.
+
+---------------------------------------------------------------------------
+
+
+ALGORITHMIC OPTIONS SPECIFIED:
+
+  Imputation method:                 Fully Bayesian model-based
+  MCMC algorithm:                    Full conditional Metropolis sampler with
+                                       Auto-Derived Conditional Distributions
+  Between-cluster imputation model:  Not applicable, single-level imputation
+  Prior for random effect variances: Not applicable, single-level imputation
+  Prior for residual variances:      Zero sum of squares, df = -2 (PRIOR2)
+  Prior for predictor variances:     Unit sum of squares, df = 2 (XPRIOR1)
+  Chain Starting Values:             Random starting values
+
+
+SIMULATED DATA SUMMARIES:
+
+Variables                              Mean        VAR     StdDev 
+                                ----------------------------------
+  x1                                 -0.207      1.569      1.253 
+  x2                                 -0.232      1.541      1.241 
+  x3                                 -0.246      1.584      1.258 
+  y1                                 -0.109      1.612      1.270 
+  y2                                 -0.153      1.682      1.297 
+  y3                                 -0.115      1.750      1.323 
+  f1                                 -0.156      1.297      1.139 
+  f2                                 -0.214      1.343      1.159 
+                                ----------------------------------
+
+
+BURN-IN POTENTIAL SCALE REDUCTION (PSR) OUTPUT:
+
+  NOTE: Split chain PSR is being used. This splits each chain's
+        iterations to create twice as many chains.
+
+  Comparing iterations across 2 chains     Highest PSR   Parameter #  
+                          251 to 500             1.608            23  
+                          501 to 1000            1.098            17  
+                          751 to 1500            1.080            17  
+                         1001 to 2000            1.063             9  
+                         1251 to 2500            1.091            17  
+                         1501 to 3000            1.028            11  
+                         1751 to 3500            1.159            23  
+                         2001 to 4000            1.071            23  
+                         2251 to 4500            1.062            11  
+                         2501 to 5000            1.040            23  
+                         2751 to 5500            1.138            23  
+                         3001 to 6000            1.108            11  
+                         3251 to 6500            1.020            11  
+                         3501 to 7000            1.009             9  
+                         3751 to 7500            1.023            23  
+                         4001 to 8000            1.020            23  
+                         4251 to 8500            1.010             6  
+                         4501 to 9000            1.016            23  
+                         4751 to 9500            1.013            17  
+                         5001 to 10000           1.006            17  
+
+
+METROPOLIS-HASTINGS ACCEPTANCE RATES:
+
+  Chain 1:
+
+    Variable                            Type    Probability   Target Value 
+    yjt(ability_x)                latent imp          0.505          0.500 
+    yjt(ability_x)                 parameter          0.535          0.500 
+    yjt(ability_y)                latent imp          0.504          0.500 
+    yjt(ability_y)                 parameter          0.530          0.500 
+    ability_x <-> ability_y        parameter          0.504          0.500 
+
+  NOTE: Suppressing printing of 1 chains.
+        Use keyword 'tuneinfo' in options to override.
+
+
+DATA INFORMATION:
+
+  Sample Size:              1000
+  Missing Data Info:
+                          miss %       1
+                                 --------
+                       x1 =  0.0       -  
+                       x2 =  0.0       -  
+                       x3 =  0.0       -  
+                       y1 =  0.0       -  
+                       y2 =  0.0       -  
+                       y3 =  0.0       -  
+                                 --------
+                                 % 100.0
+
+
+MODEL INFORMATION:
+
+  NUMBER OF PARAMETERS
+    Outcome Models:         21
+    Predictor Models:       0
+
+  FACTORS
+    Level-1:                ability_x ability_y
+
+  MODELS
+
+   factor_model:
+    [1]  yjt(ability_x) ~ Intercept@0
+    [2]  yjt(ability_y) ~ Intercept@0
+    [3]  ability_x <-> ability_y
+
+   items_model:
+    [4]  x1 ~ Intercept ability_x@1
+    [5]  x2 ~ Intercept ability_x
+    [6]  x3 ~ Intercept ability_x
+    [7]  y1 ~ Intercept ability_y@1
+    [8]  y2 ~ Intercept ability_y
+    [9]  y3 ~ Intercept ability_y
+
+
+WARNING MESSAGES:
+
+  No warning messages.
+
+
+MODEL FIT:
+
+
+  INFORMATION CRITERIA
+
+    Marginal Likelihood
+      DIC2                  19035.107
+      WAIC                  20207.424
+
+    Conditional Likelihood
+      DIC2                  19035.107
+      WAIC                  20207.424
+
+
+CORRELATIONS AMONG RESIDUALS:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+
+Correlations                         Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  yjt(ability_x), yjt(ability_y)      0.000      0.045     -0.088      0.090      0.000      0.986   1561.001 
+  yjt(ability_x), x1                 -0.007      0.043     -0.093      0.078      0.027      0.868    933.521 
+  yjt(ability_x), x2                  0.002      0.044     -0.084      0.088      0.003      0.958   9335.729 
+  yjt(ability_x), x3                  0.004      0.044     -0.085      0.089      0.006      0.941   9225.095 
+  yjt(ability_x), y1                 -0.012      0.039     -0.090      0.063      0.104      0.748   4050.550 
+  yjt(ability_x), y2                  0.034      0.039     -0.044      0.111      0.736      0.391   4580.776 
+  yjt(ability_x), y3                 -0.019      0.039     -0.097      0.058      0.231      0.631   4365.715 
+  yjt(ability_y), x1                 -0.000      0.039     -0.077      0.077      0.000      0.994   4914.067 
+  yjt(ability_y), x2                  0.006      0.039     -0.071      0.082      0.024      0.878   5613.526 
+  yjt(ability_y), x3                 -0.003      0.040     -0.082      0.075      0.005      0.945   4545.593 
+  yjt(ability_y), y1                 -0.002      0.044     -0.088      0.085      0.001      0.971   1377.500 
+  yjt(ability_y), y2                 -0.005      0.044     -0.089      0.082      0.010      0.921   7846.029 
+  yjt(ability_y), y3                  0.007      0.044     -0.080      0.093      0.023      0.880   9107.091 
+  x1, x2                             -0.008      0.043     -0.091      0.077      0.035      0.851   1524.671 
+  x1, x3                             -0.004      0.044     -0.091      0.081      0.008      0.930   1433.328 
+  x1, y1                             -0.027      0.039     -0.103      0.050      0.463      0.496   4360.692 
+  x1, y2                              0.023      0.039     -0.052      0.099      0.361      0.548   4151.906 
+  x1, y3                             -0.001      0.039     -0.077      0.078      0.000      0.990   4187.516 
+  x2, x3                              0.011      0.044     -0.075      0.095      0.064      0.800   1429.579 
+  x2, y1                              0.014      0.039     -0.061      0.091      0.144      0.705   4515.859 
+  x2, y2                              0.078      0.039      0.002      0.152      4.022      0.045   4212.039 
+  x2, y3                             -0.082      0.038     -0.157     -0.007      4.599      0.032   4641.815 
+  x3, y1                              0.002      0.039     -0.075      0.080      0.004      0.951   4257.616 
+  x3, y2                             -0.069      0.039     -0.145      0.008      3.092      0.079   4343.057 
+  x3, y3                              0.060      0.039     -0.017      0.136      2.349      0.125   4330.345 
+  y1, y2                             -0.012      0.043     -0.095      0.073      0.081      0.776   1338.455 
+  y1, y3                             -0.002      0.043     -0.087      0.082      0.002      0.966   1435.459 
+  y2, y3                              0.016      0.043     -0.068      0.101      0.146      0.702   1466.228 
+
+                                ------------------------------------------------------------------------------
+
+
+
+OUTCOME MODEL ESTIMATES:
+
+  Summaries based on 10000 iterations using 2 chains.
+
+  factor_model block:
+
+Latent Variable:   yjt(ability_x)
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       1.061      0.068      0.936      1.205        ---        ---    217.173 
+
+Transformation:                 
+  Yeo-Johnson (lambda)                1.469      0.048      1.378      1.567        ---        ---    199.419 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Latent Variable:   yjt(ability_y)
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.909      0.064      0.792      1.043        ---        ---    360.489 
+
+Transformation:                 
+  Yeo-Johnson (lambda)                1.563      0.052      1.462      1.670        ---        ---    281.514 
+
+Proportion Variance Explained   
+  by Coefficients                     0.000      0.000      0.000      0.000        ---        ---        nan 
+  by Residual Variation               1.000      0.000      1.000      1.000        ---        ---        nan 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Phantom Variable Correlations:
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+
+  ability_x <-> ability_y             0.312      0.031      0.250      0.372        ---        ---    412.855 
+
+                                ------------------------------------------------------------------------------
+
+
+  items_model block:
+
+Outcome Variable:  x1         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.259      0.017      0.227      0.294        ---        ---   1079.602 
+
+Coefficients:                   
+  Intercept                          -0.016      0.042     -0.095      0.067      0.144      0.705    105.475 
+  ability_x                         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  ability_x                           0.914      0.006      0.902      0.925  24096.845      0.000    655.728 
+
+Proportion Variance Explained   
+  by Coefficients                     0.835      0.011      0.813      0.855        ---        ---    656.181 
+  by Residual Variation               0.165      0.011      0.145      0.187        ---        ---    656.181 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  x2         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.259      0.017      0.227      0.295        ---        ---   1117.328 
+
+Coefficients:                   
+  Intercept                          -0.043      0.041     -0.122      0.040      1.076      0.299    102.801 
+  ability_x                           0.989      0.021      0.947      1.031   2163.363      0.000    538.522 
+
+Standardized Coefficients:      
+  ability_x                           0.912      0.006      0.900      0.923  22480.444      0.000   1054.921 
+
+Proportion Variance Explained   
+  by Coefficients                     0.832      0.011      0.809      0.852        ---        ---   1053.835 
+  by Residual Variation               0.168      0.011      0.148      0.191        ---        ---   1053.835 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  x3         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.234      0.017      0.202      0.267        ---        ---    903.913 
+
+Coefficients:                   
+  Intercept                          -0.052      0.042     -0.132      0.030      1.564      0.211    101.986 
+  ability_x                           1.015      0.021      0.974      1.056   2357.064      0.000    528.671 
+
+Standardized Coefficients:      
+  ability_x                           0.923      0.006      0.912      0.934  26604.879      0.000    918.949 
+
+Proportion Variance Explained   
+  by Coefficients                     0.852      0.010      0.832      0.873        ---        ---    917.347 
+  by Residual Variation               0.148      0.010      0.127      0.168        ---        ---    917.347 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y1         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.396      0.028      0.344      0.451        ---        ---    739.668 
+
+Coefficients:                   
+  Intercept                           0.101      0.038      0.024      0.173      6.970      0.008    242.095 
+  ability_y                         @ 1.000        ---        ---        ---        ---        ---        --- 
+
+Standardized Coefficients:      
+  ability_y                           0.868      0.010      0.849      0.887   8075.407      0.000    435.999 
+
+Proportion Variance Explained   
+  by Coefficients                     0.754      0.017      0.720      0.786        ---        ---    435.183 
+  by Residual Variation               0.246      0.017      0.214      0.280        ---        ---    435.183 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y2         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.473      0.030      0.417      0.534        ---        ---   1006.427 
+
+Coefficients:                   
+  Intercept                           0.056      0.039     -0.021      0.131      2.048      0.152    254.000 
+  ability_y                           1.000      0.030      0.940      1.059   1094.836      0.000    532.229 
+
+Standardized Coefficients:      
+  ability_y                           0.848      0.010      0.827      0.868   6671.134      0.000    946.649 
+
+Proportion Variance Explained   
+  by Coefficients                     0.719      0.018      0.684      0.753        ---        ---    947.882 
+  by Residual Variation               0.281      0.018      0.247      0.316        ---        ---    947.882 
+
+                                ------------------------------------------------------------------------------
+
+
+
+Outcome Variable:  y3         
+
+Parameters                           Median     StdDev       2.5%      97.5%      ChiSq     PValue      N_Eff 
+                                ------------------------------------------------------------------------------
+Variances:                      
+  Residual Var.                       0.439      0.030      0.383      0.501        ---        ---    863.118 
+
+Coefficients:                   
+  Intercept                           0.103      0.040      0.023      0.180      6.658      0.010    237.595 
+  ability_y                           1.041      0.030      0.983      1.101   1220.958      0.000    519.770 
+
+Standardized Coefficients:      
+  ability_y                           0.866      0.010      0.846      0.884   8068.802      0.000    826.017 
+
+Proportion Variance Explained   
+  by Coefficients                     0.749      0.017      0.715      0.781        ---        ---    825.261 
+  by Residual Variation               0.251      0.017      0.219      0.285        ---        ---    825.261 
+
+                                ------------------------------------------------------------------------------
+
+
+

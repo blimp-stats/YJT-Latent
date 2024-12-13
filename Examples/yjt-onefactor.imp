@@ -1,0 +1,39 @@
+SIMULATE: 
+	# Sample Size
+	n = 1000;
+	
+	define:	
+		# reliability for items loading on factor
+		rel_1 = 0.7;
+		
+		# Compute residual variances for given reliability.
+		# (v_explained / (v_resid + v_explained) = rel;
+		# Solve for v_resid;
+		v_resid = (1 / rel_1) - 1; 
+
+		# Define kappa
+		k = 0.50;
+
+	n: 
+		# Generate factor scores f1s ~ normal(0, 1)
+		f1s  = normal(0, 1);
+		
+		# Generate transform
+		f1 = iyjt(f1s, k);
+
+		# Generate items with equal loadings
+		y1:y3 = normal(f1, v_resid);
+
+VARIABLES: y1:y3; # Save only items
+LATENT: ability;
+MODEL: 
+	factor_model: yjt(ability, kappa) ~ 0;
+	items_model:  ability -> y1:y3;
+PARAMETERS:
+	kappa ~ normal(1, 0.25);
+	kappa ~ trunc(0, 2);
+BURN: 10000;
+ITER: 10000;
+SEED: 10972;
+OPTIONS: prior1;
+# DEBUG: use_autosolver = false;
